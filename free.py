@@ -70,12 +70,23 @@ for function in functions:
                         new_line[i] = "r"+str(alloc_reg.index(individual_variable))
                         for alloc_var in alloc_reg:
                             if alloc_var != 0:
-                                if not variables_end[(variables.index(alloc_var))] > index:
+                                if not variables_end[(variables.index(alloc_var))] >= index:
                                     alloc_reg[(alloc_reg.index(alloc_var))] = 0
 
         for string in new_line:
             new_ = new_ + string + " "
         new_ += "\n"
+        if linestr[0] == "#call":
+            regs_c = []
+            new_ += "# "
+            for i in range(1,len(new_line)):
+                regs_c.append(new_line[i])
+                
+            
+            for i in range(0,len(alloc_reg)):
+                if (not alloc_reg[i] in regs_c) and alloc_reg[i] != 0:
+                    new_+= "r" + str(i) + " "
+            new_ += "\n"
     print(new_)
 
     file = open("funcs\\"+function, "w")

@@ -1,3 +1,18 @@
-int meow = 2;
-int foo = 2;
-int bar = z + foo;
+
+int x=2;
+int y=3;
+int z=4;
+int v = z + ( y * x );
+
+int meow_var = 10 + ( y * x );
+function func1251;(int x; int y;){
+int n = x * y;
+return n;
+}
+function bruh;(int x; int y;){
+int n = (x * y + x) / 5 ;
+return n;
+}
+call ;func1251;(x;y;);
+call ;bruh;(x;y;);
+

@@ -1,4 +1,29 @@
-ld meow 2
-ld foo 2
-add z foo a
-ld bar a
+ld x 2
+ld y 3
+ld z 4
+mul y x a
+add z a b
+ld v b
+ld a 10
+mul y x b
+add a b c
+ld meow_var c
+func func1251
+resv x
+resv y
+mul x y a
+ld n a
+retr n
+funclose
+func bruh
+resv x
+resv y
+ld a 5
+mul x y b
+add b x c
+div c a d
+ld n d
+retr n
+funclose
+#call *func1251 x y
+#call *bruh x y

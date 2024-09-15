@@ -1,5 +1,5 @@
 resv r0 
 resv r1 
-mul r0 r0 r1 
-ld r2 r1 
-retr r2 
+mul r0 r1 r2 
+ld r3 r2 
+retr r3 
