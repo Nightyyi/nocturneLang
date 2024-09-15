@@ -1,0 +1,46 @@
+ld 2 a
+ld x a
+ld 3 a
+ld y a
+ld 4 a
+ld z a
+mul y x a
+add z a b
+|free z
+ld v b
+|free v
+ld 10 a
+mul y x b
+add a b c
+ld meow_var c
+|free meow_var
+func func1251
+|free func1251
+ld x
+ld y
+mul x y a
+ld n a
+retr n
+funclose
+func bruh
+|free bruh
+ld x
+|free b
+|free a
+ld y
+ld 5 a
+|free c
+|free x
+|free y
+mul x y b
+add b x c
+div c a d
+|free d
+|free n
+ld n d
+retr n
+funclose
+#call *func1251 x y
+|free *func1251
+#call *bruh x y
+|free *bruh

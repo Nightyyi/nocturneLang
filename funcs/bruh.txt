@@ -1,0 +1,8 @@
+resv r0 
+resv r1 
+ld 5 r2 
+mul r0 r1 r3 
+add r3 r0 r1 
+div r1 r0 r1 
+ld r2 r1 
+retr r2 

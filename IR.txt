@@ -1,0 +1,4 @@
+ld meow 2
+ld foo 2
+add z foo a
+ld bar a

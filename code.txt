@@ -1,0 +1,3 @@
+int meow = 2;
+int foo = 2;
+int bar = z + foo;

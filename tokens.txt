@@ -1,0 +1,17 @@
+ int
+meow
+ =
+2
+ -b
+ int
+foo
+ =
+2
+ -b
+ int
+bar
+ =
+z
+ +
+foo
+ -b
