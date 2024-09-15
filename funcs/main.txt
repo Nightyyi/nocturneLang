@@ -9,6 +9,6 @@ mul r1 r0 r4
 add r3 r4 r2 
 ld r5 r2 
 #call *func1251 r0 r1 
-# r0 r1 
+# r2 r3 r4 
 #call *bruh r0 r1 
-# r0 r1 
+# r2 r3 r4 

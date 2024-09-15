@@ -51,6 +51,7 @@ for function in functions:
     
     alloc_reg = [0] * 64
     new_ = ""
+    highest_reg = 0
     for index, line in enumerate(flines):
         linestr = line.split()
         new_line = linestr 
@@ -62,6 +63,8 @@ for function in functions:
                     if not individual_variable in alloc_reg:
                         for rin,check in enumerate(alloc_reg):
                             if check == 0:
+                                if rin > highest_reg:
+                                    highest_reg = rin
                                 alloc_reg[rin] = individual_variable
                                 break
                             
@@ -81,11 +84,10 @@ for function in functions:
             new_ += "# "
             for i in range(1,len(new_line)):
                 regs_c.append(new_line[i])
-                
-            
-            for i in range(0,len(alloc_reg)):
-                if (not alloc_reg[i] in regs_c) and alloc_reg[i] != 0:
-                    new_+= "r" + str(i) + " "
+            for i in range(0,highest_reg):
+                new_temp = "r" + str(i)  
+                if not (new_temp in regs_c):
+                    new_ += new_temp + " "
             new_ += "\n"
     print(new_)
 
