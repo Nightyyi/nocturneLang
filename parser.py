@@ -24,12 +24,22 @@ def equate(strlist, asmline):
             strlist[i] = newvar
     for i in range(0,len(strlist)):
         op = False
+        if strlist[i] == ' ||': op = True
+        if strlist[i] == ' &&': op = True
+        if strlist[i] == ' ^^': op = True
         if strlist[i] == ' +': op = True
         if strlist[i] == ' -': op = True
         if strlist[i] == ' *': op = True
         if strlist[i] == ' /': op = True
         if strlist[i] == ' -(': op = True
         if strlist[i] == ' -)': op = True
+
+        if strlist[i] == ' ==': op = True
+        if strlist[i] == ' !=': op = True
+        if strlist[i] == ' >=': op = True
+        if strlist[i] == ' <=': op = True
+        if strlist[i] == ' >': op = True
+        if strlist[i] == ' <': op = True
         if op == False:
             vars.append(strlist[i])
             strlist[i] = indx
@@ -48,23 +58,68 @@ def equate(strlist, asmline):
                 parcounter+=1
             if char == ' -)':
                 parcounter-=1
+            if char == ' >':
+                newscore = (parcounter*4)+1 
+                if newscore > score:
+                    i = ii
+                    score = newscore
+            if char == ' <':
+                newscore = (parcounter*4)+1
+                if newscore > score:
+                    i = ii
+                    score = newscore
+            if char == ' >=':
+                newscore = (parcounter*5)+1
+                if newscore > score:
+                    i = ii
+                    score = newscore
+            if char == ' <=':
+                newscore = (parcounter*5)+1
+                if newscore > score:
+                    i = ii
+                    score = newscore
+            if char == ' !=':
+                newscore = (parcounter*5)+1
+                if newscore > score:    
+                    i = ii              
+                    score = newscore    
+            if char == ' ==':           
+                newscore = (parcounter*5)+1
+                if newscore > score:    
+                    i = ii              
+                    score = newscore    
+            if char == ' ||':          
+                newscore = (parcounter*5)+2 
+                if newscore > score:    
+                    i = ii              
+                    score = newscore    
+            if char == ' ^^':          
+                newscore = (parcounter*5)+2
+                if newscore > score:
+                    i = ii
+                    score = newscore
+            if char == ' &&':          
+                newscore = (parcounter*5)+2
+                if newscore > score:
+                    i = ii
+                    score = newscore
             if char == ' +':
-                newscore = (parcounter*3)+1 
+                newscore = (parcounter*5)+3
                 if newscore > score:
                     i = ii
                     score = newscore
             if char == ' -':
-                newscore = (parcounter*3)+1 
+                newscore = (parcounter*5)+3 
                 if newscore > score:
                     i = ii
                     score = newscore
             if char == ' *':
-                newscore = (parcounter*3)+2
+                newscore = (parcounter*5)+4
                 if newscore > score:
                     i = ii
                     score = newscore
             if char == ' /':
-                newscore = (parcounter*3)+2 
+                newscore = (parcounter*5)+4 
                 if newscore > score:
                     i = ii
                     score = newscore
@@ -118,6 +173,114 @@ def equate(strlist, asmline):
             strcode += "div " + vars[arg1] + " " + vars[arg2] + " " + newarg + "\n"
             linestoadd+=1
             op = True
+        if strlist[i] == ' ^^': 
+            arg1 = strlist[i-1]
+            arg2 = strlist[i+1]
+            newarg = checkin(vars, possiblevars)
+            strlist[i] = len(vars)
+            vars.append(newarg)
+            strlist.pop(i-1)
+            strlist.pop(i)
+            i-=1
+            strcode += "xor" + vars[arg1] + " " + vars[arg2] + " " + newarg + "\n"
+            linestoadd+=1
+            op = True
+        if strlist[i] == ' ||': 
+            arg1 = strlist[i-1]
+            arg2 = strlist[i+1]
+            newarg = checkin(vars, possiblevars)
+            strlist[i] = len(vars)
+            vars.append(newarg)
+            strlist.pop(i-1)
+            strlist.pop(i)
+            i-=1
+            strcode += "or " + vars[arg1] + " " + vars[arg2] + " " + newarg + "\n"
+            linestoadd+=1
+            op = True
+        if strlist[i] == ' ==': 
+            arg1 = strlist[i-1]
+            arg2 = strlist[i+1]
+            newarg = checkin(vars, possiblevars)
+            strlist[i] = len(vars)
+            vars.append(newarg)
+            strlist.pop(i-1)
+            strlist.pop(i)
+            i-=1
+            strcode += "eq " + vars[arg1] + " " + vars[arg2] + " " + newarg + "\n"
+            linestoadd+=1
+            op = True
+        if strlist[i] == ' !=': 
+            arg1 = strlist[i-1]
+            arg2 = strlist[i+1]
+            newarg = checkin(vars, possiblevars)
+            strlist[i] = len(vars)
+            vars.append(newarg)
+            strlist.pop(i-1)
+            strlist.pop(i)
+            i-=1
+            strcode += "neq " + vars[arg1] + " " + vars[arg2] + " " + newarg + "\n"
+            linestoadd+=1
+            op = True
+        if strlist[i] == ' >=': 
+            arg1 = strlist[i-1]
+            arg2 = strlist[i+1]
+            newarg = checkin(vars, possiblevars)
+            strlist[i] = len(vars)
+            vars.append(newarg)
+            strlist.pop(i-1)
+            strlist.pop(i)
+            i-=1
+            strcode += "eqmr " + vars[arg1] + " " + vars[arg2] + " " + newarg + "\n"
+            linestoadd+=1
+            op = True
+        if strlist[i] == ' <=': 
+            arg1 = strlist[i-1]
+            arg2 = strlist[i+1]
+            newarg = checkin(vars, possiblevars)
+            strlist[i] = len(vars)
+            vars.append(newarg)
+            strlist.pop(i-1)
+            strlist.pop(i)
+            i-=1
+            strcode += "eqls " + vars[arg1] + " " + vars[arg2] + " " + newarg + "\n"
+            linestoadd+=1
+            op = True
+        if strlist[i] == ' <': 
+            arg1 = strlist[i-1]
+            arg2 = strlist[i+1]
+            newarg = checkin(vars, possiblevars)
+            strlist[i] = len(vars)
+            vars.append(newarg)
+            strlist.pop(i-1)
+            strlist.pop(i)
+            i-=1
+            strcode += "mrtn " + vars[arg1] + " " + vars[arg2] + " " + newarg + "\n"
+            linestoadd+=1
+            op = True
+        if strlist[i] == ' >': 
+            arg1 = strlist[i-1]
+            arg2 = strlist[i+1]
+            newarg = checkin(vars, possiblevars)
+            strlist[i] = len(vars)
+            vars.append(newarg)
+            strlist.pop(i-1)
+            strlist.pop(i)
+            i-=1
+            strcode += "lstn " + vars[arg1] + " " + vars[arg2] + " " + newarg + "\n"
+            linestoadd+=1
+            op = True
+        if strlist[i] == ' &&': 
+            arg1 = strlist[i-1]
+            arg2 = strlist[i+1]
+            newarg = checkin(vars, possiblevars)
+            strlist[i] = len(vars)
+            vars.append(newarg)
+            strlist.pop(i-1)
+            strlist.pop(i)
+            i-=1
+            strcode += "and " + vars[arg1] + " " + vars[arg2] + " " + newarg + "\n"
+            linestoadd+=1
+            op = True
         
         caught = True
         while caught and (len(strlist) > 1):
@@ -130,6 +293,15 @@ def equate(strlist, asmline):
                 if strlist[iiii] == ' -': op = True
                 if strlist[iiii] == ' *': op = True
                 if strlist[iiii] == ' /': op = True
+                if strlist[iiii] == ' &&': op = True
+                if strlist[iiii] == ' ||': op = True
+                if strlist[iiii] == ' ^^': op = True
+                if strlist[iiii] == ' ==': op = True
+                if strlist[iiii] == ' !=': op = True
+                if strlist[iiii] == ' >=': op = True
+                if strlist[iiii] == ' <=': op = True
+                if strlist[iiii] == ' >': op = True
+                if strlist[iiii] == ' <': op = True
                 if not iiii > 0:
                     valid = False
                 if not iiii < len(strlist):

@@ -31,7 +31,67 @@ for i in range(0, len(strf)):
         charlist.append(" /")
         characcul = ""
         add = False
-    if char == "=":
+    if char == "!":
+        if op == False:
+            charlist.append(characcul)
+            charlist.append(" !")
+            characcul = ""
+            add = False
+            op = True
+        else:
+            characcul = ""
+            charlist[len(charlist)-1] += "!"
+    elif char == "<":
+        if op == False:
+            charlist.append(characcul)
+            charlist.append(" <")
+            characcul = ""
+            add = False
+            op = True
+        else:
+            characcul = ""
+            charlist[len(charlist)-1] += "<"
+    elif char == ">":
+        if op == False:
+            charlist.append(characcul)
+            charlist.append(" >")
+            characcul = ""
+            add = False
+            op = True
+        else:
+            characcul = ""
+            charlist[len(charlist)-1] += ">"
+    elif char == "^":
+        if op == False:
+            charlist.append(characcul)
+            charlist.append(" ^")
+            characcul = ""
+            add = False
+            op = True
+        else:
+            characcul = ""
+            charlist[len(charlist)-1] += "^"
+    elif char == "|":
+        if op == False:
+            charlist.append(characcul)
+            charlist.append(" |")
+            characcul = ""
+            add = False
+            op = True
+        else:
+            characcul = ""
+            charlist[len(charlist)-1] += "|"
+    elif char == "&":
+        if op == False:
+            charlist.append(characcul)
+            charlist.append(" &")
+            characcul = ""
+            add = False
+            op = True
+        else:
+            characcul = ""
+            charlist[len(charlist)-1] += "&"
+    elif char == "=":
         if op == False:
             charlist.append(characcul)
             charlist.append(" =")
