@@ -110,7 +110,7 @@ for i in range(0, len(strf)):
         characcul = ""
         add = False
     if char == "(":
-        charlist.append(" "+characcul)
+        charlist.append(characcul)
         characcul = ""
         charlist.append(" -(")
         characcul = ""
@@ -160,7 +160,7 @@ for i in range(0, len(strf)):
         addend = False
     if char == "\t":
         addend = False
-    if char == " ":
+    if char == ' ':
         addend = False
     if char == ",":
         addend = False

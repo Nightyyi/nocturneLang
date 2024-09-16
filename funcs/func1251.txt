@@ -2,4 +2,5 @@ resv r0
 resv r1 
 mul r0 r1 r2 
 ld r3 r2 
+if r3 
 retr r3 

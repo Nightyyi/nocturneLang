@@ -315,6 +315,51 @@ def equate(strlist, asmline):
                     break
                 iiii+=1
                 
+            iiii = 0
+            stage = 0
+            list_vals_in_func = []
+            func_name = -1
+            func_range = -1
+            while iiii < len(strlist):
+                op = False 
+                valid = True
+                if strlist[iiii] == ' +': op = True
+                if strlist[iiii] == ' -': op = True
+                if strlist[iiii] == ' *': op = True
+                if strlist[iiii] == ' /': op = True
+                if strlist[iiii] == ' &&': op = True
+                if strlist[iiii] == ' ||': op = True
+                if strlist[iiii] == ' ^^': op = True
+                if strlist[iiii] == ' ==': op = True
+                if strlist[iiii] == ' !=': op = True
+                if strlist[iiii] == ' >=': op = True
+                if strlist[iiii] == ' <=': op = True
+                if strlist[iiii] == ' >': op = True
+                if strlist[iiii] == ' <': op = True
+                print(strlist[iiii], "stage: "+ str(stage))
+                if stage == 2 and op == False:
+                    list_vals_in_func.append(strlist[iiii])
+                if op == False and stage == 0:
+                    stage = 1 
+                    func_range = iiii
+                    func_name = iiii 
+                elif strlist[iiii] == " -(" and stage == 1:
+                    stage = 2
+                elif strlist[iiii] == " -)" and stage == 2:
+                    strcode += "#call *" + vars[func_name]
+                    for aeaee in list_vals_in_func:
+                        if type(aeaee) == int:
+                            strcode += " " + vars[aeaee]
+                    stage = 0
+                    for list_index in range(func_range+1,iiii+1):
+                        strlist.pop(func_range)
+                    newarg = checkin(vars, possiblevars)
+                    strlist[func_range] = len(vars)
+                    vars.append(newarg)
+                    strcode += "\n"
+                elif op == True:
+                    stage = 0
+                iiii+=1
         i+=1
     print(vars)
     print(strlist)
