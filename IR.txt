@@ -1,10 +1,48 @@
 ld x 5
-ld y 23
-eqmr x y a
-ld z a
-eqls x y a
-ld z a
-neq x y a
-ld z a
-eq x y a
-ld z a
+ld y 5
+ld z 0
+mrtn x y a
+ld n a
+if n
+ld a 5
+mul x y b
+add a b c
+ld z c
+if z
+closeif
+ld x 2
+if x
+ld y 3
+if y
+ld z 4
+if z
+mul y x a
+add z a b
+ld v b
+if v
+ld a 10
+mul y x b
+add a b c
+ld meow_var c
+if meow_var
+func func1251
+resv x
+resv y
+mul x y a
+ld n a
+if n
+retr n
+funclose
+func bruh
+resv x
+resv y
+ld a 5
+mul x y b
+add b x c
+div c a d
+ld n d
+if n
+retr n
+funclose
+#call *func1251 x y
+#call *bruh x y

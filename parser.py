@@ -356,6 +356,8 @@ functionlines = []
 opstring = []
 indentation = 0
 functionsdefined = []
+tempstr3 = ""
+tempstr5 = ""
 while len(strlist) > index:
     instruction = strlist[index]
     if mode == "call":
@@ -410,6 +412,10 @@ while len(strlist) > index:
                 opstring = []
                 newstr += tempstr2 
                 newstr += tempstr +" "+ var + "\n"
+                
+                tempstr4 = tempstr.split()
+                if tempstr3 != "":
+                    newstr += tempstr3 + tempstr4[1] + "\n"
                 tempstr = ""
                 asmline+= asmlineplus
                 mode = ""
@@ -428,14 +434,22 @@ while len(strlist) > index:
                 tempvar = strlist[index+1]
                 newstr += "retr " + tempvar + "\n"
                 index+=1
+            case " if":
+                tempstr3 = "if "
+                tempstr5 = "ifclose "
+                asmline+=1
             case " int":
                 tempstr += "ld "
                 asmline+=1
             case " -}":
+                if tempstr5 == "ifclose ":
+                    newstr += "closeif\n"
+                    tempstr5 = ""
                 indentation -=1
                 if funcscope == 1 and indentation == 0:
                     newstr += "funclose\n"
                     funcsope = 0
+
             case " -{":
                 indentation +=1 
             case " =":
