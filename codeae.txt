@@ -1,4 +1,9 @@
-
+int x = 5;
+int y = 5;
+int z = 0;
+if ( int n = x < y; ){
+  int z = 5 + ( x * y );
+}
 int x=2;
 int y=3;
 int z=4;

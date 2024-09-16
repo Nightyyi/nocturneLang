@@ -3,79 +3,10 @@ x
  =
 5
  -b
- int
-y
- =
-5
- -b
- int
-z
- =
-0
- -b
- if
- -(
- int
-n
- =
-x
- <
-y
- -b
- -)
- -{
- int
-z
- =
-5
- +
- -(
-x
- *
-y
- -)
- -b
- -}
- int
-x
- =
-2
- -b
- int
-y
- =
-3
- -b
- int
-z
- =
-4
- -b
- int
-v
- =
-z
- +
- -(
-y
- *
-x
- -)
- -b
- int
-meow_var
- =
-10
- +
- -(
-y
- *
-x
- -)
- -b
  function
 func1251
  -b
+ 
  -(
  int
 x
@@ -96,54 +27,12 @@ y
 n
  -b
  -}
- function
-bruh
- -b
- -(
  int
 x
- -b
- int
-y
- -b
- -)
- -{
- int
-n
  =
+ funct1251
  -(
-x
- *
-y
- +
-x
- -)
- /
-5
- -b
- return
-n
- -b
- -}
- call
- -b
-func1251
- -b
- -(
-x
- -b
-y
- -b
- -)
- -b
- call
- -b
-bruh
- -b
- -(
-x
- -b
-y
- -b
+1
+1
  -)
  -b
