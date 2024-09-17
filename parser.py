@@ -346,14 +346,14 @@ def equate(strlist, asmline):
                 elif strlist[iiii] == " -(" and stage == 1:
                     stage = 2
                 elif strlist[iiii] == " -)" and stage == 2:
-                    strcode += "#call *" + vars[func_name]
+                    newarg = checkin(vars, possiblevars)
+                    strcode += "#call " + newarg + " *" + vars[func_name]
                     for aeaee in list_vals_in_func:
                         if type(aeaee) == int:
                             strcode += " " + vars[aeaee]
                     stage = 0
                     for list_index in range(func_range+1,iiii+1):
                         strlist.pop(func_range)
-                    newarg = checkin(vars, possiblevars)
                     strlist[func_range] = len(vars)
                     vars.append(newarg)
                     strcode += "\n"
@@ -461,6 +461,7 @@ while len(strlist) > index:
                 tempstr4 = tempstr.split()
                 if tempstr3 != "":
                     newstr += tempstr3 + tempstr4[1] + "\n"
+                    tempstr3 = ""
                 tempstr = ""
                 asmline+= asmlineplus
                 mode = ""
@@ -480,15 +481,24 @@ while len(strlist) > index:
                 newstr += "retr " + tempvar + "\n"
                 index+=1
             case " if":
-                tempstr3 = "if "
+                tempstr3 = "bnz "
                 tempstr5 = "ifclose "
                 asmline+=1
+            case " while":
+                newstr += "openloop\n"
+                tempstr3 = "bnz "
+                tempstr5 = "ifloop "
+                tempstr = ""
+                asmline+=2
             case " int":
                 tempstr += "ld "
                 asmline+=1
             case " -}":
                 if tempstr5 == "ifclose ":
                     newstr += "closeif\n"
+                    tempstr5 = ""
+                if tempstr5 == "ifloop ":
+                    newstr += "closeloop\n"
                     tempstr5 = ""
                 indentation -=1
                 if funcscope == 1 and indentation == 0:

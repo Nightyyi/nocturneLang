@@ -7,4 +7,10 @@ print(" Done Parsing")
 import cutter
 print(" Done Cutting functions")
 import free
-print(" Done Cutting functions")
+print(" Done Freeing Variables")
+import ifloops
+print(" Done connecting Loops")
+import callsynth
+print(" Done synthesizing calls")
+import assembler
+print(" Done synthesizing calls")

@@ -1,3 +1,1 @@
 main.txt
-func1251.txt
-bruh.txt

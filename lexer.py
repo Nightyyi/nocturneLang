@@ -140,6 +140,10 @@ for i in range(0, len(strf)):
         charlist.append(" "+characcul)
         characcul = ""
         add = False
+    if characcul == "while":
+        charlist.append(" "+characcul)
+        characcul = ""
+        add = False
     if characcul == "if":
         charlist.append(" "+characcul)
         characcul = ""
