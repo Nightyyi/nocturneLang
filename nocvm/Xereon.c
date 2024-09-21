@@ -4,57 +4,72 @@
 
 #include <signal.h>
 
-void alu (int alu_operation, int bus_A, int bus_B, int* intermediate_value){
+int alu (int alu_operation, int bus_A, int bus_B){
+  int intermediate_value;
   switch (alu_operation){
     case 0: //
-      *intermediate_value = bus_A + bus_B;
+      intermediate_value = bus_A + bus_B;
       break;
     case 1: //
-      *intermediate_value = bus_A - bus_B;
+      intermediate_value = bus_A - bus_B;
       break;
     case 2: //
-      *intermediate_value = bus_A ^ bus_B;
+      intermediate_value = bus_A ^ bus_B;
       break;
     case 3: //
-      *intermediate_value = bus_A | bus_B;
+      intermediate_value = bus_A | bus_B;
       break;
     case 4: //
-      *intermediate_value = bus_A & bus_B;
+      intermediate_value = bus_A & bus_B;
       break;
     case 5: //
-      *intermediate_value = bus_A >> bus_B;
+      intermediate_value = bus_A >> bus_B;
       break;
     case 6: //
-      *intermediate_value = bus_A << bus_B;
+      intermediate_value = bus_A << bus_B;
       break;
     case 7: //
-      *intermediate_value = bus_A > bus_B;
+      intermediate_value = bus_A > bus_B;
       break;
     case 8: //
-      *intermediate_value = bus_A < bus_B;
+      intermediate_value = bus_A < bus_B;
       break;
     case 9: //
-      *intermediate_value = bus_A == bus_B;
+      intermediate_value = bus_A == bus_B;
       break;
     case 10: //
-      *intermediate_value = bus_A != bus_B;
+      intermediate_value = bus_A != bus_B;
       break;
     case 11: //
-      *intermediate_value = bus_A >= bus_B;
+      intermediate_value = bus_A >= bus_B;
       break;
     case 12: //
-      *intermediate_value = bus_A <= bus_B;
+      intermediate_value = bus_A <= bus_B;
       break;
     case 13: //
-      *intermediate_value = bus_A * bus_B;
+      intermediate_value = bus_A * bus_B;
       break;
     case 14: //
-      *intermediate_value = bus_A / bus_B;
+      intermediate_value = bus_A / bus_B;
       break;
   }
+  return intermediate_value;
 }
 
 
+char* int_to_bin32( int integer_value ){
+  char* binary_string = malloc(33);
+  char single_character;
+  for (int i = 0; i < 32; i++){
+    if ( ((integer_value >> i) & 1) == 1 ){
+      binary_string[i] = '1';
+    } else {
+      binary_string[i] = '0';
+    }
+  }
+  binary_string[32] = 0;
+  return binary_string;
+}
 
 int bin_to_int( char* binary_string ){
   int value = 0; int value_plus;
@@ -123,6 +138,7 @@ int main(){
     printf("%d ", arch_memory[i]);
   }
 
+  fclose(file);
 
 
 	int* registers = (int*) calloc(64, 4);
@@ -132,7 +148,7 @@ int main(){
   int intermediate_value;
 
   int instruction;
-  for (int instruction_pointer = 0; instruction_pointer < 10; instruction_pointer++){
+  for (int instruction_pointer = 0; instruction_pointer < 4096; instruction_pointer++){
     instruction = arch_memory[instruction_pointer];
 
     int operation           =  (instruction >> 25) & 0xcf;
@@ -155,7 +171,7 @@ int main(){
         alu_operation = secondary_operand >> 2;
         bus_A = registers[ primary_operand & 0x3f ];
         bus_B =  registers[ primary_operand >> 6 & 0x3f ];
-        alu(alu_operation, bus_A, bus_B, &intermediate_value);
+        int intermediate_value = alu(alu_operation, bus_A, bus_B);
         registers[ ((primary_operand >> 12 & 0x3f) + ((secondary_operand & 3) << 4)) & 0b111111 ] = intermediate_value;
         break;
       case 0b0000100: //WR
@@ -192,12 +208,19 @@ int main(){
         }
         break;
       case 0b0001100: // CLR
-        for (int iii=0; iii< 64; iii++){
+        int temporary_value = registers[primary_operand & 0b1111111]
+        for (int iii=0; iii< temporary_value; iii++){
           registers[iii] = 0;
         }
         break;
+      case 0b0001101: // OUT
+        int error = fopen_s(&file,"out.out","w");
+        char* out_value = int_to_bin32(registers[primary_operand & 0b1111111]);
+        fputs(out_value, file);
+        free(out_value);
+        break;
       case 0xcf:
-        for ( int iii=0; iii < 64; iii++ ){ 
+        for ( int iii=0; iii < 63; iii++ ){ 
           if (iii % 8 == 0){ printf("\n"); }
           printf("%08x ", registers[iii]); 
         }
@@ -205,10 +228,12 @@ int main(){
         break;
 
     }
-    printf( "%d", instruction_pointer );
+    printf("\n%d,  %b", instruction_pointer, instruction);
   }  
   
-
-  fclose(file);
+  printf("\n\n||||||||||||||||||||||||||END||||||||||||||||||||||||||\n\n");
+  
+  free(arch_memory);
+  free(registers);
   return 1;
 }

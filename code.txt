@@ -1,6 +1,11 @@
 int x = 5;
 int y = 5;
 int z = 0;
-if ( int n = x < y; ){
-  int z = 5 + ( x * y );
+
+function calculate;(int x, int y){
+  int n = (x * y + x) / 5 ;
+  return n;
 }
+
+int new = calculate(5,2);
+

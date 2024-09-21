@@ -115,6 +115,10 @@ def assemble(name):
                     inst_add = "0001000" + "0" * 3 +  int_to_bin(line[2][1:],6) +  int_to_bin(line[1][1:],16)
                     new_lines.append(inst_add +"\n")
             
+            elif instruction == "clr":
+                    inst_add = "0001100" + "0" * 19 +  int_to_bin(line[1][1:],6) 
+                    new_lines.append(inst_add +"\n")
+            
             else:
                 new_lines.append("/ "+line_ns+" \\")
 

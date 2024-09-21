@@ -12,5 +12,9 @@ import ifloops
 print(" Done connecting Loops")
 import callsynth
 print(" Done synthesizing calls")
+import retsynth
+print(" Done synthesizing returns")
+import build
+print(" Done Building")
 import assembler
-print(" Done synthesizing calls")
+print(" Done Assembling")

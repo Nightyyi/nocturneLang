@@ -1,11 +1,17 @@
 ld x 5
 ld y 5
 ld z 0
-mrtn x y a
-ld n a
-bnz n
 ld a 5
 mul x y b
-add a b c
-ld z c
-closeif
+add b x c
+div c a d
+func calculate
+resv x
+resv y
+ld n d
+retr n
+funclose
+ld a 5
+ld a 2
+#call b *calculate a a
+ld new b

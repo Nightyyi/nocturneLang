@@ -1,0 +1,9 @@
+resv r0 
+resv r1 
+ld r2 r3 
+ld r60 r2
+ld r57 57
+clr r57
+ld r61 64
+sub r61 r62 r62
+j r63

@@ -13,26 +13,39 @@ z
  =
 0
  -b
- if
+ function
+calculate
+ -b
  -(
  int
-n
- =
 x
- <
+ int
 y
- -b
  -)
  -{
  int
-z
+n
  =
-5
- +
  -(
 x
  *
 y
+ +
+x
  -)
+ /
+5
+ -b
+ return
+n
  -b
  -}
+ int
+new
+ =
+calculate
+ -(
+5
+2
+ -)
+ -b

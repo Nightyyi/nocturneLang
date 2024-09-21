@@ -14,7 +14,15 @@ ld r61 0
 sub r61 r62 r62
 ld r61 64
 sub r61 r62 r62
-#jump *calculate
+gad r63
+ld r61 4
+add r63 r61
+ld r61 33
+b r61
+ld r61 1
+add r61 r62 r62
+rd r63 r62
+sub r61 r62 r62
 ld r2 r60
 ld r61 0
 add r61 r62 r62
@@ -22,3 +30,14 @@ rd r0 r62
 ld r61 0
 sub r61 r62 r62
 ld r0 r2 
+end
+resv r0 
+resv r1 
+ld r2 r3 
+ld r60 r2
+ld r57 57
+clr r57
+ld r61 64
+sub r61 r62 r62
+j r63
+end
