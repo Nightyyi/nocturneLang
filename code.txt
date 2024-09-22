@@ -7,5 +7,5 @@ function calculate;(int x, int y){
   return n;
 }
 
-int new = calculate(5,2);
+int new = calculate(5,2,23,15);
 

@@ -28,7 +28,7 @@ int alu (int alu_operation, int bus_A, int bus_B){
 
 
 char* int_to_bin32( int integer_value ){
-  char* binary_string = (char*) malloc(33);
+  char* binary_string = malloc(33);
   char single_character;
   for (int i = 0; i < 32; i++){
     if ( ((integer_value >> i) & 1) == 1 ){
@@ -79,7 +79,7 @@ char* string_slice( char* binary_string, int address_min, int address_max ){
 FILE *file;
 
 int main(){
-	int error = fopen_s(&file,"mem.txt","r");	
+	int error = fopen_s(&file,"gpumem.txt","r");	
 
 	int* arch_memory = (int*) calloc(4096, 4);
 	
@@ -141,7 +141,7 @@ int main(){
         alu_operation = secondary_operand >> 2;
         bus_A = registers[ primary_operand & 0x3f ];
         bus_B =  registers[ primary_operand >> 6 & 0x3f ];
-        intermediate_value = alu(alu_operation, bus_A, bus_B);
+        int intermediate_value = alu(alu_operation, bus_A, bus_B);
         registers[ ((primary_operand >> 12 & 0x3f) + ((secondary_operand & 3) << 4)) & 0b111111 ] = intermediate_value;
         break;
       case 0b0000100: //WR
@@ -178,7 +178,7 @@ int main(){
         }
         break;
       case 0b0001100: // CLR
-        int temporary_value = registers[primary_operand & 0b1111111];
+        int temporary_value = registers[primary_operand & 0b1111111]
         for (int iii=0; iii< temporary_value; iii++){
           registers[iii] = 0;
         }
@@ -190,19 +190,7 @@ int main(){
         free(out_value);
         break;
       case 0b0001110: // GAD
-        registers[primary_operand & 0b111111] = instruction_pointer;        
-        break;
-      case 0b0001111: // IN
-        error = fopen_s(&file,"in.in","r");
-        char* temp = (char*) calloc(1,32);
-        int counter=0;
-        while (!feof(file)) {
-          temp[counter] = fgetc(file);
-          counter++;
-        }
-        registers[primary_operand & 0b1111111] = bin_to_int( temp );
-        free(out_value);
-        free(temp);
+        registers[primary_operand_operand & 0b111111] = instruction_pointer;        
         break;
       case 0xcf:
         for ( int iii=0; iii < 63; iii++ ){ 

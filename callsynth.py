@@ -72,6 +72,45 @@ for function in functions:
             new_+= "sub r61 r62 r62\n"
             new_+= "ld r61 64\n"
             new_+= "sub r61 r62 r62\n"
+
+            vars_to_call = linestr[3:]
+
+            listn = [x for x in range(0,64)] 
+            listo = [x for x in range(0,64)] 
+            target = [-1] * 64 
+            for index, var_to_call in enumerate(vars_to_call):
+                target[index] = int(var_to_call[1:])
+
+            print(listn)
+            print(target)
+            do = True
+            strnew = ""
+            while do:
+                do = False
+                for zz in range(0,len(listn)):
+                    i = target[zz]
+                    if i != -1:
+                        x = listn[zz]
+                        y = listn[i]
+                        ii = target[i]
+                        if zz != i:
+                            listn[zz] = y
+                            listn[i]  = x
+                            target[i] = i
+                            target[zz] = ii
+                            print("----")
+                            print("swapped r"+str(x) +" and r"+str(y))
+                            print("----")
+                            print(listn[:4])
+                            print(target[:4])
+                            strnew += "swp r" + str(x) + " r" + str(y) + "\n"
+                            do = True
+            new_+= strnew
+
+            print(listn)
+            print(target)
+            print(strnew)
+
             new_+= "#jump "+ linestr[2] + "\n"
             new_+= "ld " + linestr[1] + " r60\n"
             start_ = 0

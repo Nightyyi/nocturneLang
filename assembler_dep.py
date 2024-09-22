@@ -33,7 +33,8 @@ def assemble(name):
     for line_ns in lines:
         inst_add = ""
         line = line_ns.split()
-        instruction = line[0].lower()
+        instruction = line[0]
+        print(line)
         if   instruction == "ld":
             list_o_nums = "0123456789"
             if line[2][0] in list_o_nums :
@@ -105,33 +106,15 @@ def assemble(name):
         elif instruction == "resv":
             pass
 
-        elif instruction == "gad":
-                inst_add = "0001110" + "0" * 19 +  int_to_bin(line[1][1:],6) 
-                new_lines.append(inst_add +"\n")
-
-        elif instruction == "end":
-                inst_add = "0" * 32 
-                new_lines.append(inst_add +"\n")
-        
         elif instruction == "clr":
                 inst_add = "0001100" + "0" * 19 +  int_to_bin(line[1][1:],6) 
                 new_lines.append(inst_add +"\n")
         
-        elif instruction == "j":
-                inst_add = "0001001" + "0" * 19 +  int_to_bin(line[1][1:],6) 
-                new_lines.append(inst_add +"\n")
-        
-        elif instruction == "jz":
-                inst_add = "0001010" + "0" * 19 +  int_to_bin(line[1][1:],6) 
-                new_lines.append(inst_add +"\n")
-        
-        elif instruction == "jnz":
-                inst_add = "0001011" + "0" * 19 +  int_to_bin(line[1][1:],6) 
-                new_lines.append(inst_add +"\n")
         else:
             new_lines.append("/ "+line_ns+" \\")
 
         new_ = ""
+        print(new_lines)
         for i in new_lines:
             incrementor = 0
             new_line_acc = ""

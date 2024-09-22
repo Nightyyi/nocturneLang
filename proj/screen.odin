@@ -5,62 +5,96 @@ import "core:os"
 import "core:strings"
 import "core:strconv"
 import "core:slice"
+import "core:math"
+import "core:c"
 import "vendor:raylib"
 
-read_entire_file :: proc( array_out: rawptr ,file_path: string ) {
-  data, ok := os.read_entire_file(file_path, context.allocator)
-  if !ok {
-    fmt.println("Couldnt read file\n maybe file path doesnt exist.")
-    return  
-  }
-  defer delete(data, context.allocator)
-  
-  array_c := 0
-  for strlist in data{
-      array_out[array_c] = strlist
-      array_c +=1
+data_to_val :: proc( data: []u8 ) -> u128{
+  value_filtered : u128 = 0
+  counter : u8 = 0 
+  for individual_character in data{
+    if individual_character == '1'{
+      add : u128 = 1 << counter
+      value_filtered = value_filtered + add
+      counter+=1
     }
+    if individual_character == '0'{
+      counter+=1
+    }
+  }
+  return value_filtered
+
 }
+
+
 
 main :: proc() {
     using raylib
 
     fmt.println("goodbye world")
-    screenWidth :: 800
-    screenHeight :: 800
-    fmt.print("a")
+    screenWidth :: 512
+    screenHeight :: 512
     InitWindow(screenWidth, screenHeight, "rlib")
 
     SetTargetFPS(60)
 
     windowShouldClose := false
-    fmt.print("b")
-    dat : [1064]u8
-    datptr := &dat
-    read_entire_file(datptr, ".\\connection.txt")
+    
+    
+
     out : i32
     x : i32
     y : i32
+    old_value : u128 = 0
+    color := Color({ u8(255), u8(255), u8(255), u8(255)})
+    buffer : [256*256]Color
     for !windowShouldClose {
+        data, ok := os.read_entire_file(".\\connection.txt", context.allocator)
+        if (!ok) {
+          fmt.println("Couldnt read file\n maybe file path doesnt exist.")
+        }
+        if ok {
+        
+          defer delete(data, context.allocator)
 
+          value_filtered := data_to_val(data)     
+          if (value_filtered != old_value){
+            fmt.printf("%016x\n",value_filtered)
 
-        fmt.println(x)
-        x = 0
-        y = 0
-        for x in 0..<800 {
-          BeginDrawing()
-          for y in 0..<800 {
-            DrawPixel( i32(x), i32(y), Color{ u8(out), u8(out), u8(out),u8(255) }) 
-          
+          instruction := (value_filtered >> 32)
+          operand := value_filtered & 0xffffffff
+          switch (instruction){
+            case 1:  
+              x := operand & 0x000000ff
+              y := operand & 0x0000ff00 >> 8
+              index := x + (y * 256)
+              buffer[index] = color
+        
+            case 2:  
+              r := u8(operand & 0x000000ff)
+              g := u8(operand & 0x0000ff00) >> 8
+              b := u8(operand & 0x00ff0000) >> 16
+              a := u8(operand & 0xff000000) >> 24
+              color := Color({r,g,b,a})
           }
-        }    
-        EndDrawing()
+          } 
+          old_value = value_filtered
+          c_index := 0
+          BeginDrawing()
+          for cell_color in buffer{
+            DrawPixel( (i32(c_index%256))*2  , (i32((c_index/256)))*2  , cell_color) 
+            DrawPixel( (i32(c_index%256))*2+1, (i32((c_index/256)))*2  , cell_color) 
+            DrawPixel( (i32(c_index%256))*2  , (i32((c_index/256)))*2+1, cell_color) 
+            DrawPixel( (i32(c_index%256))*2+1, (i32((c_index/256)))*2+1, cell_color) 
+            
+            c_index+=1
+          }
+          EndDrawing()
+
+        }
         if IsKeyPressed(KeyboardKey.ESCAPE) {
             windowShouldClose = true
         }
-        fmt.print("right before EndDrawing()")
-
-        fmt.print("f")
     }
     CloseWindow()
 }

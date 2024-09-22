@@ -16,5 +16,7 @@ import retsynth
 print(" Done synthesizing returns")
 import build
 print(" Done Building")
+import capitalizer
+print(" Done Capitalizing")
 import assembler
 print(" Done Assembling")

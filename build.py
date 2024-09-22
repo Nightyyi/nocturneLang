@@ -55,7 +55,7 @@ for line in lines:
         jmpval = linestarts[funcnames.index(function_name)] + 1 + lines_extra
         comp+="gad r63\n"
         comp+="ld r61 4\n"
-        comp+="add r63 r61" + "\n"
+        comp+="add r61 r63 r63" + "\n"
         comp+="ld r61 "+ str(jmpval) + "\n"
         comp+="b r61" + "\n"
         comp+="ld r61 1\n"

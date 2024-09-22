@@ -6,6 +6,7 @@ def checkin(xlist, possiblevar):
 
 
 def equate(strlist, asmline):
+    print(strlist)
     indx = 0
     vars = []
     possiblevars = ['a','b','c','d','e','f','g','h','i','j','k','l','m','o','p','q','r','s']
@@ -21,8 +22,8 @@ def equate(strlist, asmline):
                 while (True):
                     print("something went wrong")
             strcode += "ld " + newvar + " " + str(strlist[i]) + "\n"
+            vars.append(newvar)
             strlist[i] = newvar
-    for i in range(0,len(strlist)):
         op = False
         if strlist[i] == ' ||': op = True
         if strlist[i] == ' &&': op = True
@@ -41,7 +42,8 @@ def equate(strlist, asmline):
         if strlist[i] == ' >': op = True
         if strlist[i] == ' <': op = True
         if op == False:
-            vars.append(strlist[i])
+            if not strlist[i] in vars:
+                vars.append(strlist[i])
             strlist[i] = indx
             indx+=1
     parcounter = 0
@@ -342,7 +344,8 @@ def equate(strlist, asmline):
                 if op == False and stage == 0:
                     stage = 1 
                     func_range = iiii
-                    func_name = iiii 
+                    func_name = iiii
+                    print(func_name)
                 elif strlist[iiii] == " -(" and stage == 1:
                     stage = 2
                 elif strlist[iiii] == " -)" and stage == 2:
