@@ -1,19 +1,11 @@
 ld x 5
 ld y 5
 ld z 0
-ld a 5
-mul x y b
-add b a c
-div c b d
-func calculate
-resv x
-resv y
-ld n d
-retr n
-funclose
-ld a 5
-ld b 2
-ld c 23
-ld d 15
-#call e *calculate a b c d
-ld new e
+ld a 4
+mul y a b
+add x b c
+ld new c
+div z new a
+ld meow a
+RDC meow
+WRC meow

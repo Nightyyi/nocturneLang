@@ -13,41 +13,25 @@ z
  =
 0
  -b
- function
-calculate
- -b
- -(
- int
-x
- int
-y
- -)
- -{
- int
-n
- =
- -(
-x
- *
-y
- +
-x
- -)
- /
-5
- -b
- return
-n
- -b
- -}
  int
 new
  =
-calculate
- -(
-5
-2
-23
-15
- -)
+x
+ +
+y
+ *
+4
+ -b
+ int
+meow
+ =
+z
+ /
+new
+ -b
+ readc
+meow
+ -b
+ writec
+meow
  -b

@@ -1,42 +1,12 @@
 LD r0 5 
 LD r1 5 
 LD r2 0 
-LD r3 5 
-MUL r0 r1 r2 
-ADD r2 r3 r0 
-DIV r0 r2 r1 
-LD r3 5 
-LD r2 2 
-LD r0 23 
-LD r1 15 
-LD r61 0 
-SUB r61 r62 r62 
-LD r61 64 
-SUB r61 r62 r62 
-SWP r0 r3 
-SWP r1 r2 
-SWP r3 r2 
-GAD r63 
-LD r61 4 
-ADD r61 r63 r63 
-LD r61 32 
-B r61 
-LD r61 1 
-ADD r61 r62 r62 
-RD r63 r62 
-SUB r61 r62 r62 
-LD r4 r60 
-LD r61 0 
-SUB r61 r62 r62 
-LD r5 r4 
-END 
-RESV r0 
-RESV r1 
-LD r2 r3 
-LD r60 r2 
-LD r57 57 
-CLR r57 
-LD r61 64 
-SUB r61 r62 r62 
-J r63 
+LD r3 4 
+MUL r1 r3 r4 
+ADD r0 r4 r1 
+LD r5 r1 
+DIV r2 r5 r3 
+LD r0 r3 
+RDC r0 
+WRC r0 
 END 

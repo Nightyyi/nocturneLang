@@ -89,6 +89,14 @@ def assemble(name):
         elif instruction == "rd":
                 inst_add = "0000101" + "0" * 3 +  int_to_bin(line[1][1:],6) + int_to_bin(line[2][1:],16) 
                 new_lines.append(inst_add +"\n")
+        
+        elif instruction == "wrc":
+                inst_add = "0001111" + "0" * 19 +  int_to_bin(line[1][1:],6) 
+                new_lines.append(inst_add +"\n")
+
+        elif instruction == "rdc":
+                inst_add = "0001101" + "0" * 19 +  int_to_bin(line[1][1:],6) 
+                new_lines.append(inst_add +"\n")
             
         elif instruction == "b":
                 inst_add = "0000110" + "0" * 19 +  int_to_bin(line[1][1:],6) 
@@ -127,6 +135,10 @@ def assemble(name):
         
         elif instruction == "jnz":
                 inst_add = "0001011" + "0" * 19 +  int_to_bin(line[1][1:],6) 
+                new_lines.append(inst_add +"\n")
+        
+        elif instruction == "swp":
+                inst_add = "0010000" + "0" * 13 + int_to_bin(line[1][1:],6) + int_to_bin(line[2][1:],6) 
                 new_lines.append(inst_add +"\n")
         else:
             new_lines.append("/ "+line_ns+" \\")

@@ -474,6 +474,27 @@ while len(strlist) > index:
     if mode == "logic":
         print("no")
         mode = ""
+    if mode == "writec":
+        match instruction:
+            case " -b":
+                mode = ""
+                
+                tempstr = "WRC "+ tempstr +"\n"
+                newstr += tempstr
+                tempstr= ""
+            case _:
+                tempstr = instruction
+    if mode == "readc":
+        match instruction:
+            case " -b":
+                mode = ""
+                
+                tempstr = "RDC "+ tempstr +"\n"
+                newstr += tempstr 
+                tempstr= ""
+            case _:
+                tempstr = instruction
+
     if mode == "":
         match instruction:
             case " -b":
@@ -514,6 +535,10 @@ while len(strlist) > index:
                 mode = "eq"
             case " call":
                 mode = "call" 
+            case " writec":
+                mode = "writec" 
+            case " readc":
+                mode = "readc" 
             case " function":
                 mode = "function" 
             case _:

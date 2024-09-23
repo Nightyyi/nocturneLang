@@ -145,7 +145,6 @@ int main(){
         registers[ ((primary_operand >> 12 & 0x3f) + ((secondary_operand & 3) << 4)) & 0b111111 ] = intermediate_value;
         break;
       case 0b0000100: //WR
-
         registers[secondary_operand & 0b111111] =  arch_memory[registers[primary_operand & 0b111111]];
         break;
       case 0b0000101: //RD
@@ -188,6 +187,7 @@ int main(){
         char* out_value = int_to_bin32(registers[primary_operand & 0b1111111]);
         fputs(out_value, file);
         free(out_value);
+        fclose(file);
         break;
       case 0b0001110: // GAD
         registers[primary_operand & 0b111111] = instruction_pointer;        
@@ -200,9 +200,16 @@ int main(){
           temp[counter] = fgetc(file);
           counter++;
         }
-        registers[primary_operand & 0b1111111] = bin_to_int( temp );
-        free(out_value);
+        int valt = bin_to_int( temp );
+        registers[primary_operand & 0b111111] = valt;
         free(temp);
+        fclose(file);
+        break;
+      case 0b0010000: // SWAP
+        int tempv_1 = registers[primary_operand & 0b1111111];
+        int tempv_2 = registers[secondary_operand & 0b1111111];
+        registers[primary_operand & 0b1111111]  = tempv_2;
+        registers[secondary_operand & 0b1111111] = tempv_1;
         break;
       case 0xcf:
         for ( int iii=0; iii < 63; iii++ ){ 

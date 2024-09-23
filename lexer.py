@@ -160,6 +160,14 @@ for i in range(0, len(strf)):
         charlist.append(" "+characcul)
         characcul = ""
         add = False
+    if characcul == "readc":
+        charlist.append(" "+characcul)
+        characcul = ""
+        add = False
+    if characcul == "writec":
+        charlist.append(" "+characcul)
+        characcul = ""
+        add = False
     if char == "\n":
         addend = False
     if char == "\t":

@@ -1,23 +1,11 @@
 ld r0 5 
 ld r1 5 
 ld r2 0 
-ld r3 5 
-mul r0 r1 r2 
-add r2 r3 r0 
-div r0 r2 r1 
-ld r3 5 
-ld r2 2 
-ld r0 23 
-ld r1 15 
-ld r61 0
-sub r61 r62 r62
-ld r61 64
-sub r61 r62 r62
-swp r0 r3
-swp r1 r2
-swp r3 r2
-#jump *calculate
-ld r4 r60
-ld r61 0
-sub r61 r62 r62
-ld r5 r4 
+ld r3 4 
+mul r1 r3 r4 
+add r0 r4 r1 
+ld r5 r1 
+div r2 r5 r3 
+ld r0 r3 
+RDC r0 
+WRC r0 
