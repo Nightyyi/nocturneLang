@@ -1,11 +1,7 @@
-ld x 5
-ld y 5
-ld z 0
-ld a 4
-mul y a b
-add x b c
-ld new c
-div z new a
-ld meow a
-RDC meow
-WRC meow
+ld x 0
+openloop
+ld n 0
+bnz n
+ld value 0
+RDC value
+closeloop

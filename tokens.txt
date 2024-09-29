@@ -1,37 +1,23 @@
  int
 x
  =
-5
+0
  -b
+ while
+ -(
  int
-y
- =
-5
- -b
- int
-z
+n
  =
 0
  -b
+ -)
+ -{
  int
-new
+value
  =
-x
- +
-y
- *
-4
- -b
- int
-meow
- =
-z
- /
-new
+0
  -b
  readc
-meow
+value
  -b
- writec
-meow
- -b
+ -}

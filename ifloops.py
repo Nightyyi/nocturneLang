@@ -61,7 +61,8 @@ for function in functions:
 
             if mode2 == "loop":
                 mode2 = ""
-                new_list.append("ld r63 " + str(index_loop))
+                ii = len(new_list)+1
+                new_list.append("ldn r63 " + str(index_loop-ii))
                 new_list.append("b r63 " )
             if mode == "if":
                 mode = ""

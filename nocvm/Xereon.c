@@ -121,7 +121,8 @@ int main(){
   for (int instruction_pointer = 0; instruction_pointer < 4096; instruction_pointer++){
     instruction = arch_memory[instruction_pointer];
 
-    int operation           =  (instruction >> 25) & 0xcf;
+    printf("\n%d bruh",(instruction >> 25));
+    int operation           =  (instruction >> 25);
     int secondary_operand   =  (instruction >> 16) & 0x1ff; 
     int primary_operand     =  instruction & 0xffff;
     printf("\no: %02x s: %03x p: %04x  f_inst: %08x ", operation, secondary_operand, primary_operand, instruction);
@@ -150,7 +151,8 @@ int main(){
       case 0b0000101: //RD
         arch_memory[registers[secondary_operand & 0b111111]] =  registers[primary_operand & 0b111111];
         break;
-      case 0b0000110: // B 
+      case 0b0000110: // B
+        printf("branch val: %d\n",registers[primary_operand & 0b111111]);
         instruction_pointer = instruction_pointer + registers[primary_operand & 0b111111];
         break;
       case 0b0000111: // BZ
@@ -210,6 +212,10 @@ int main(){
         int tempv_2 = registers[secondary_operand & 0b1111111];
         registers[primary_operand & 0b1111111]  = tempv_2;
         registers[secondary_operand & 0b1111111] = tempv_1;
+        break;
+      case 0b0010001: // LD negative
+        registers[secondary_operand & 0b111111] =  -primary_operand ;        
+        
         break;
       case 0xcf:
         for ( int iii=0; iii < 63; iii++ ){ 

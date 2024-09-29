@@ -140,6 +140,9 @@ def assemble(name):
         elif instruction == "swp":
                 inst_add = "0010000" + "0" * 13 + int_to_bin(line[1][1:],6) + int_to_bin(line[2][1:],6) 
                 new_lines.append(inst_add +"\n")
+        elif instruction == "ldn":
+                inst_add = "0010001" + "0" * 3 + int_to_bin(line[1][1:],6) + int_to_bin(line[2][1:],16) 
+                new_lines.append(inst_add +"\n")
         else:
             new_lines.append("/ "+line_ns+" \\")
 
