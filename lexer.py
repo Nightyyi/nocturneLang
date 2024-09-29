@@ -148,7 +148,7 @@ for i in range(0, len(strf)):
         charlist.append(" "+characcul)
         characcul = ""
         add = False
-    if characcul == "return":
+    if characcul == "return" and strf[i+1] == " ":
         charlist.append(" "+characcul)
         characcul = ""
         add = False
@@ -165,6 +165,10 @@ for i in range(0, len(strf)):
         characcul = ""
         add = False
     if characcul == "writec":
+        charlist.append(" "+characcul)
+        characcul = ""
+        add = False
+    if characcul == "get":
         charlist.append(" "+characcul)
         characcul = ""
         add = False

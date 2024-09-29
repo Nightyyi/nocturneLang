@@ -406,6 +406,7 @@ indentation = 0
 functionsdefined = []
 tempstr3 = ""
 tempstr5 = ""
+tempstr6 = ""
 while len(strlist) > index:
     instruction = strlist[index]
     if mode == "call":
@@ -494,6 +495,16 @@ while len(strlist) > index:
                 tempstr= ""
             case _:
                 tempstr = instruction
+    if mode == "get":
+        match instruction:
+            case " -b":
+                mode = ""
+                
+                tempstr = "RD "+ tempstr +"\n"
+                newstr += tempstr 
+                tempstr= ""
+            case _:
+                tempstr += instruction + " "
 
     if mode == "":
         match instruction:
@@ -508,25 +519,26 @@ while len(strlist) > index:
                 tempstr3 = "bnz "
                 tempstr5 = "ifclose "
                 asmline+=1
+            case " get":
+                mode = "get" 
+                asmline+=1
             case " while":
                 newstr += "openloop\n"
-                tempstr3 = "bnz "
-                tempstr5 = "ifloop "
+                tempstr3 = "bz "
+                tempstr6 = "ifloop "
                 tempstr = ""
                 asmline+=2
             case " int":
                 tempstr += "ld "
                 asmline+=1
             case " -}":
-                if tempstr5 == "ifclose ":
-                    newstr += "closeif\n"
-                    tempstr5 = ""
-                if tempstr5 == "ifloop ":
-                    newstr += "closeloop\n"
-                    tempstr5 = ""
                 indentation -=1
+                newstr += "close\n"
+                if tempstr6 == "ifloop ":
+                    newstr += "close\n"
+                    tempstr6 = ""
+
                 if funcscope == 1 and indentation == 0:
-                    newstr += "funclose\n"
                     funcsope = 0
 
             case " -{":

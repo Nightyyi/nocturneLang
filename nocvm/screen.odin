@@ -10,19 +10,10 @@ import "core:c"
 import "vendor:raylib"
 
 data_to_val :: proc( data: []u8 ) -> u128{
-  value_filtered : u128 = 0
   counter : u8 = 0 
-  for individual_character in data{
-    if individual_character == '1'{
-      add : u128 = 1 << counter
-      value_filtered = value_filtered + add
-      counter+=1
-    }
-    if individual_character == '0'{
-      counter+=1
-    }
-  }
-  return value_filtered
+  value, ok := strconv.parse_u64_of_base(string(data),2)
+
+  return u128(value)
 
 }
 
@@ -49,7 +40,7 @@ main :: proc() {
     color := Color({ u8(255), u8(255), u8(255), u8(255)})
     buffer : [256*256]Color
     for !windowShouldClose {
-        data, ok := os.read_entire_file(".\\connection.txt", context.allocator)
+        data, ok := os.read_entire_file(".\\out.out", context.allocator)
         if (!ok) {
           fmt.println("Couldnt read file\n maybe file path doesnt exist.")
         }
@@ -57,17 +48,21 @@ main :: proc() {
         
           defer delete(data, context.allocator)
 
-          value_filtered := data_to_val(data)     
+          value_filtered := data_to_val(data)   
           if (value_filtered != old_value){
-            fmt.printf("%016x\n",value_filtered)
+            fmt.printf("%08x\n",value_filtered)
+            fmt.printf("%08d\n",value_filtered)
 
           instruction := (value_filtered >> 24)
-          operand := value_filtered & 0x7fffffff
+          operand := value_filtered & 0xffffff
+          fmt.println("instruction: %d\n operand: %d", instruction, operand)
           switch (instruction){
             case 1:  
               x := operand & 0x000000ff
               y := operand & 0x0000ff00 >> 8
+              fmt.println("drawing pixel at x:%d, y:%d", x, y)
               index := x + (y * 256)
+      fmt.print('0')
               buffer[index] = color
         
             case 2:  

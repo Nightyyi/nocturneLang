@@ -1,6 +1,169 @@
-int x = 0;
-while ( int n = 0; ){
+int screen_x = 0;
+int screen_y = 0;
+while ( int n = 1; ){
   int value = 0;
   readc value;
-  
-}:while
+  int operation = value / 4096*4096;
+  int x = value && 255;
+  int y = (value / 256) && 255;
+  int z = (value / 65536) && 255;
+  if ( int n = operation == 1;){
+    int address = x + 5000;
+    get char, address;
+    int return_value_const = 4096*4096; 
+    if (int n = char &&  1; ){
+        int return_value = return_value_const + screen_x + screen_y * 256;
+        writec return_value;
+        }              
+    int screen_x = screen_x+1;
+    if (int n = char &&  2; ){
+        int return_value = return_value_const + screen_x + screen_y * 256;
+        writec return_value;
+                       
+        }              
+    int screen_x = screen_x+1;
+    if (int n = char &&  4; ){
+        int return_value = return_value_const + screen_x + screen_y * 256;
+        writec return_value;
+                       
+        }              
+    int screen_x = screen_x+1;
+    if (int n = char &&  8; ){
+        int return_value = return_value_const + screen_x + screen_y * 256;
+        writec return_value;
+                       
+        }              
+    int screen_x = screen_x+1;
+    if (int n = char &&  16; ){
+        int return_value = return_value_const + screen_x + screen_y * 256;
+        writec return_value;
+                       
+        }             
+    int screen_x = screen_x+1;
+    int screen_y = screen_y+1;
+    if (int n = char &&  32; ){
+        int return_value = return_value_const + screen_x + screen_y * 256;
+        writec return_value;
+                       
+        }              
+    int screen_x = screen_x+1;
+    if (int n = char &&  64; ){
+        int return_value = return_value_const + screen_x + screen_y * 256;
+        writec return_value;
+                       
+        }              
+    int screen_x = screen_x+1;
+    if (int n = char &&  128; ){
+        int return_value = return_value_const + screen_x + screen_y * 256;
+        writec return_value;
+                       
+        }              
+    int screen_x = screen_x+1;
+    if (int n = char &&  256; ){
+        int return_value = return_value_const + screen_x + screen_y * 256;
+        writec return_value;
+                       
+        }              
+    int screen_x = screen_x+1;
+    if (int n = char &&  512; ){
+        int return_value = return_value_const + screen_x + screen_y * 256;
+        writec return_value;
+                       
+        }              
+    int screen_x = screen_x-4;
+    int screen_y = screen_y+1;
+    if (int n = char &&  1024; ){
+        int return_value = return_value_const + screen_x + screen_y * 256;
+        writec return_value;
+                       
+        }              
+    int screen_x = screen_x+1;
+    if (int n = char &&  2048; ){
+        int return_value = return_value_const + screen_x + screen_y * 256;
+        writec return_value;
+                       
+        }              
+    int screen_x = screen_x+1;
+    if (int n = char &&  4096; ){
+        int return_value = return_value_const + screen_x + screen_y * 256;
+        writec return_value;
+                       
+        }              
+    int screen_x = screen_x+1;
+    if (int n = char &&  8192; ){
+        int return_value = return_value_const + screen_x + screen_y * 256;
+        writec return_value;
+                       
+        }              
+    int screen_x = screen_x+1;
+    if (int n = char &&  16384; ){
+        int return_value = return_value_const + screen_x + screen_y * 256;
+        writec return_value;
+                       
+        }              
+    int screen_x = screen_x-4;
+    int screen_y = screen_y+1;
+    if (int n = char &&  32768; ){
+        int return_value = return_value_const + screen_x + screen_y * 256;
+        writec return_value;
+                       
+        }              
+    int screen_x = screen_x+1;
+    if (int n = char &&  65536; ){
+        int return_value = return_value_const + screen_x + screen_y * 256;
+        writec return_value;
+                       
+        }              
+    int screen_x = screen_x+1;
+    if (int n = char &&  131072; ){
+        int return_value = return_value_const + screen_x + screen_y * 256;
+        writec return_value;
+                       
+        }              
+    int screen_x = screen_x+1;
+    if (int n = char &&  262144; ){
+        int return_value = return_value_const + screen_x + screen_y * 256;
+        writec return_value;
+                       
+        }              
+    int screen_x = screen_x+1;
+    if (int n = char &&  524288; ){
+        int return_value = return_value_const + screen_x + screen_y * 256;
+        writec return_value;
+                       
+        }              
+    int screen_x = screen_x-4;
+    int screen_y = screen_y+1;
+    if (int n = char &&  1048576; ){
+        int return_value = return_value_const + screen_x + screen_y * 256;
+        writec return_value;
+                       
+        }              
+    int screen_x = screen_x+1;
+    if (int n = char &&  2097152; ){
+        int return_value = return_value_const + screen_x + screen_y * 256;
+        writec return_value;
+                       
+        }              
+    int screen_x = screen_x+1;
+    if (int n = char &&  4194304; ){
+        int return_value = return_value_const + screen_x + screen_y * 256;
+        writec return_value;
+                       
+        }              
+    int screen_x = screen_x+1;
+    if (int n = char &&  8388608; ){
+        int return_value = return_value_const + screen_x + screen_y * 256;
+        writec return_value;
+                       
+        }              
+    int screen_x = screen_x+1;
+    if (int n = char &&  16777216; ){
+        int return_value = return_value_const + screen_x + screen_y * 256;
+        writec return_value;
+
+        }
+    int screen_x = screen_x+1;
+    int screen_y = screen_y-5;
+  } 
+}

@@ -1,5 +1,10 @@
  int
-x
+screen_x
+ =
+0
+ -b
+ int
+screen_y
  =
 0
  -b
@@ -8,7 +13,7 @@ x
  int
 n
  =
-0
+1
  -b
  -)
  -{
@@ -20,4 +25,932 @@ value
  readc
 value
  -b
+ int
+operation
+ =
+value
+ /
+4096
+ *
+4096
+ -b
+ int
+x
+ =
+value
+ &&
+255
+ -b
+ int
+y
+ =
+ -(
+value
+ /
+256
+ -)
+ &&
+255
+ -b
+ int
+z
+ =
+ -(
+value
+ /
+65536
+ -)
+ &&
+255
+ -b
+ if
+ -(
+ int
+n
+ =
+operation
+ ==
+1
+ -b
+ -)
+ -{
+ int
+address
+ =
+x
+ +
+5000
+ -b
+ get
+char
+address
+ -b
+ int
+return_value_const
+ =
+4096
+ *
+4096
+ -b
+ if
+ -(
+ int
+n
+ =
+char
+ &&
+1
+ -b
+ -)
+ -{
+ int
+return_value
+ =
+return_value_const
+ +
+screen_x
+ +
+screen_y
+ *
+256
+ -b
+ writec
+return_value
+ -b
+ -}
+ int
+screen_x
+ =
+screen_x
+ +
+1
+ -b
+ if
+ -(
+ int
+n
+ =
+char
+ &&
+2
+ -b
+ -)
+ -{
+ int
+return_value
+ =
+return_value_const
+ +
+screen_x
+ +
+screen_y
+ *
+256
+ -b
+ writec
+return_value
+ -b
+ -}
+ int
+screen_x
+ =
+screen_x
+ +
+1
+ -b
+ if
+ -(
+ int
+n
+ =
+char
+ &&
+4
+ -b
+ -)
+ -{
+ int
+return_value
+ =
+return_value_const
+ +
+screen_x
+ +
+screen_y
+ *
+256
+ -b
+ writec
+return_value
+ -b
+ -}
+ int
+screen_x
+ =
+screen_x
+ +
+1
+ -b
+ if
+ -(
+ int
+n
+ =
+char
+ &&
+8
+ -b
+ -)
+ -{
+ int
+return_value
+ =
+return_value_const
+ +
+screen_x
+ +
+screen_y
+ *
+256
+ -b
+ writec
+return_value
+ -b
+ -}
+ int
+screen_x
+ =
+screen_x
+ +
+1
+ -b
+ if
+ -(
+ int
+n
+ =
+char
+ &&
+16
+ -b
+ -)
+ -{
+ int
+return_value
+ =
+return_value_const
+ +
+screen_x
+ +
+screen_y
+ *
+256
+ -b
+ writec
+return_value
+ -b
+ -}
+ int
+screen_x
+ =
+screen_x
+ +
+1
+ -b
+ int
+screen_y
+ =
+screen_y
+ +
+1
+ -b
+ if
+ -(
+ int
+n
+ =
+char
+ &&
+32
+ -b
+ -)
+ -{
+ int
+return_value
+ =
+return_value_const
+ +
+screen_x
+ +
+screen_y
+ *
+256
+ -b
+ writec
+return_value
+ -b
+ -}
+ int
+screen_x
+ =
+screen_x
+ +
+1
+ -b
+ if
+ -(
+ int
+n
+ =
+char
+ &&
+64
+ -b
+ -)
+ -{
+ int
+return_value
+ =
+return_value_const
+ +
+screen_x
+ +
+screen_y
+ *
+256
+ -b
+ writec
+return_value
+ -b
+ -}
+ int
+screen_x
+ =
+screen_x
+ +
+1
+ -b
+ if
+ -(
+ int
+n
+ =
+char
+ &&
+128
+ -b
+ -)
+ -{
+ int
+return_value
+ =
+return_value_const
+ +
+screen_x
+ +
+screen_y
+ *
+256
+ -b
+ writec
+return_value
+ -b
+ -}
+ int
+screen_x
+ =
+screen_x
+ +
+1
+ -b
+ if
+ -(
+ int
+n
+ =
+char
+ &&
+256
+ -b
+ -)
+ -{
+ int
+return_value
+ =
+return_value_const
+ +
+screen_x
+ +
+screen_y
+ *
+256
+ -b
+ writec
+return_value
+ -b
+ -}
+ int
+screen_x
+ =
+screen_x
+ +
+1
+ -b
+ if
+ -(
+ int
+n
+ =
+char
+ &&
+512
+ -b
+ -)
+ -{
+ int
+return_value
+ =
+return_value_const
+ +
+screen_x
+ +
+screen_y
+ *
+256
+ -b
+ writec
+return_value
+ -b
+ -}
+ int
+screen_x
+ =
+screen_x
+ -
+4
+ -b
+ int
+screen_y
+ =
+screen_y
+ +
+1
+ -b
+ if
+ -(
+ int
+n
+ =
+char
+ &&
+1024
+ -b
+ -)
+ -{
+ int
+return_value
+ =
+return_value_const
+ +
+screen_x
+ +
+screen_y
+ *
+256
+ -b
+ writec
+return_value
+ -b
+ -}
+ int
+screen_x
+ =
+screen_x
+ +
+1
+ -b
+ if
+ -(
+ int
+n
+ =
+char
+ &&
+2048
+ -b
+ -)
+ -{
+ int
+return_value
+ =
+return_value_const
+ +
+screen_x
+ +
+screen_y
+ *
+256
+ -b
+ writec
+return_value
+ -b
+ -}
+ int
+screen_x
+ =
+screen_x
+ +
+1
+ -b
+ if
+ -(
+ int
+n
+ =
+char
+ &&
+4096
+ -b
+ -)
+ -{
+ int
+return_value
+ =
+return_value_const
+ +
+screen_x
+ +
+screen_y
+ *
+256
+ -b
+ writec
+return_value
+ -b
+ -}
+ int
+screen_x
+ =
+screen_x
+ +
+1
+ -b
+ if
+ -(
+ int
+n
+ =
+char
+ &&
+8192
+ -b
+ -)
+ -{
+ int
+return_value
+ =
+return_value_const
+ +
+screen_x
+ +
+screen_y
+ *
+256
+ -b
+ writec
+return_value
+ -b
+ -}
+ int
+screen_x
+ =
+screen_x
+ +
+1
+ -b
+ if
+ -(
+ int
+n
+ =
+char
+ &&
+16384
+ -b
+ -)
+ -{
+ int
+return_value
+ =
+return_value_const
+ +
+screen_x
+ +
+screen_y
+ *
+256
+ -b
+ writec
+return_value
+ -b
+ -}
+ int
+screen_x
+ =
+screen_x
+ -
+4
+ -b
+ int
+screen_y
+ =
+screen_y
+ +
+1
+ -b
+ if
+ -(
+ int
+n
+ =
+char
+ &&
+32768
+ -b
+ -)
+ -{
+ int
+return_value
+ =
+return_value_const
+ +
+screen_x
+ +
+screen_y
+ *
+256
+ -b
+ writec
+return_value
+ -b
+ -}
+ int
+screen_x
+ =
+screen_x
+ +
+1
+ -b
+ if
+ -(
+ int
+n
+ =
+char
+ &&
+65536
+ -b
+ -)
+ -{
+ int
+return_value
+ =
+return_value_const
+ +
+screen_x
+ +
+screen_y
+ *
+256
+ -b
+ writec
+return_value
+ -b
+ -}
+ int
+screen_x
+ =
+screen_x
+ +
+1
+ -b
+ if
+ -(
+ int
+n
+ =
+char
+ &&
+131072
+ -b
+ -)
+ -{
+ int
+return_value
+ =
+return_value_const
+ +
+screen_x
+ +
+screen_y
+ *
+256
+ -b
+ writec
+return_value
+ -b
+ -}
+ int
+screen_x
+ =
+screen_x
+ +
+1
+ -b
+ if
+ -(
+ int
+n
+ =
+char
+ &&
+262144
+ -b
+ -)
+ -{
+ int
+return_value
+ =
+return_value_const
+ +
+screen_x
+ +
+screen_y
+ *
+256
+ -b
+ writec
+return_value
+ -b
+ -}
+ int
+screen_x
+ =
+screen_x
+ +
+1
+ -b
+ if
+ -(
+ int
+n
+ =
+char
+ &&
+524288
+ -b
+ -)
+ -{
+ int
+return_value
+ =
+return_value_const
+ +
+screen_x
+ +
+screen_y
+ *
+256
+ -b
+ writec
+return_value
+ -b
+ -}
+ int
+screen_x
+ =
+screen_x
+ -
+4
+ -b
+ int
+screen_y
+ =
+screen_y
+ +
+1
+ -b
+ if
+ -(
+ int
+n
+ =
+char
+ &&
+1048576
+ -b
+ -)
+ -{
+ int
+return_value
+ =
+return_value_const
+ +
+screen_x
+ +
+screen_y
+ *
+256
+ -b
+ writec
+return_value
+ -b
+ -}
+ int
+screen_x
+ =
+screen_x
+ +
+1
+ -b
+ if
+ -(
+ int
+n
+ =
+char
+ &&
+2097152
+ -b
+ -)
+ -{
+ int
+return_value
+ =
+return_value_const
+ +
+screen_x
+ +
+screen_y
+ *
+256
+ -b
+ writec
+return_value
+ -b
+ -}
+ int
+screen_x
+ =
+screen_x
+ +
+1
+ -b
+ if
+ -(
+ int
+n
+ =
+char
+ &&
+4194304
+ -b
+ -)
+ -{
+ int
+return_value
+ =
+return_value_const
+ +
+screen_x
+ +
+screen_y
+ *
+256
+ -b
+ writec
+return_value
+ -b
+ -}
+ int
+screen_x
+ =
+screen_x
+ +
+1
+ -b
+ if
+ -(
+ int
+n
+ =
+char
+ &&
+8388608
+ -b
+ -)
+ -{
+ int
+return_value
+ =
+return_value_const
+ +
+screen_x
+ +
+screen_y
+ *
+256
+ -b
+ writec
+return_value
+ -b
+ -}
+ int
+screen_x
+ =
+screen_x
+ +
+1
+ -b
+ if
+ -(
+ int
+n
+ =
+char
+ &&
+16777216
+ -b
+ -)
+ -{
+ int
+return_value
+ =
+return_value_const
+ +
+screen_x
+ +
+screen_y
+ *
+256
+ -b
+ writec
+return_value
+ -b
+ -}
+ int
+screen_x
+ =
+screen_x
+ +
+1
+ -b
+ int
+screen_y
+ =
+screen_y
+ -
+5
+ -b
+ -}
  -}

@@ -81,6 +81,14 @@ def assemble(name):
         elif instruction == "rsht":
                 inst_add = "0000010" + "0000110"+ int_to_bin(line[3][1:],6) + int_to_bin(line[2][1:],6) + int_to_bin(line[1][1:],6) 
                 new_lines.append(inst_add +"\n")
+        
+        elif instruction == "eq":
+                inst_add = "0000010" + "0001001"+ int_to_bin(line[3][1:],6) + int_to_bin(line[2][1:],6) + int_to_bin(line[1][1:],6) 
+                new_lines.append(inst_add +"\n")
+
+        elif instruction == "neq":
+                inst_add = "0000010" + "0001010"+ int_to_bin(line[3][1:],6) + int_to_bin(line[2][1:],6) + int_to_bin(line[1][1:],6) 
+                new_lines.append(inst_add +"\n")
 
         elif instruction == "wr":
                 inst_add = "0000100" + "0" * 3 +  int_to_bin(line[1][1:],6) + int_to_bin(line[2][1:],16) 

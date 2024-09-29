@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <windows.h>
 
 #include <signal.h>
 
@@ -21,7 +22,7 @@ int alu (int alu_operation, int bus_A, int bus_B){
     case 11: intermediate_value = bus_A >= bus_B;break;
     case 12: intermediate_value = bus_A <= bus_B;break;
     case 13: intermediate_value = bus_A *  bus_B;break;
-    case 14: intermediate_value = bus_A /  bus_B;break;
+    case 14: intermediate_value = (double)bus_A / (double)bus_B; intermediate_value = (int)intermediate_value;break;
   }
   return intermediate_value;
 }
@@ -31,7 +32,7 @@ char* int_to_bin32( int integer_value ){
   char* binary_string = (char*) malloc(33);
   char single_character;
   for (int i = 0; i < 32; i++){
-    if ( ((integer_value >> i) & 1) == 1 ){
+    if ( ((integer_value >> (31-i)) & 1) == 1 ){
       binary_string[i] = '1';
     } else {
       binary_string[i] = '0';
@@ -81,7 +82,7 @@ FILE *file;
 int main(){
 	int error = fopen_s(&file,"mem.txt","r");	
 
-	int* arch_memory = (int*) calloc(4096, 4);
+	int* arch_memory = (int*) calloc(65536, 4);
 	
 
   char ch;
@@ -103,10 +104,6 @@ int main(){
 			
 		}
 	}
-  for (int i = 0; i < 4096; i++){
-
-    printf("%d ", arch_memory[i]);
-  }
 
   fclose(file);
 
@@ -120,14 +117,9 @@ int main(){
   int instruction;
   for (int instruction_pointer = 0; instruction_pointer < 4096; instruction_pointer++){
     instruction = arch_memory[instruction_pointer];
-
-    printf("\n%d bruh",(instruction >> 25));
     int operation           =  (instruction >> 25);
     int secondary_operand   =  (instruction >> 16) & 0x1ff; 
     int primary_operand     =  instruction & 0xffff;
-    printf("\no: %02x s: %03x p: %04x  f_inst: %08x ", operation, secondary_operand, primary_operand, instruction);
-    printf("\no: %02d s: %03x p: %04d  f_inst: %08d ", operation, secondary_operand, primary_operand, instruction);
-    printf("\n%d,  %b", instruction_pointer, instruction);
     switch ( operation ){
       case 0b0000000: //END
         instruction_pointer= 256*256*256;
@@ -146,13 +138,12 @@ int main(){
         registers[ ((primary_operand >> 12 & 0x3f) + ((secondary_operand & 3) << 4)) & 0b111111 ] = intermediate_value;
         break;
       case 0b0000100: //WR
-        registers[secondary_operand & 0b111111] =  arch_memory[registers[primary_operand & 0b111111]];
-        break;
-      case 0b0000101: //RD
         arch_memory[registers[secondary_operand & 0b111111]] =  registers[primary_operand & 0b111111];
         break;
+      case 0b0000101: //RD
+        registers[secondary_operand & 0b111111] =  arch_memory[registers[primary_operand & 0b111111]];
+        break;
       case 0b0000110: // B
-        printf("branch val: %d\n",registers[primary_operand & 0b111111]);
         instruction_pointer = instruction_pointer + registers[primary_operand & 0b111111];
         break;
       case 0b0000111: // BZ
@@ -184,17 +175,19 @@ int main(){
           registers[iii] = 0;
         }
         break;
-      case 0b0001101: // OUT
+      case 0b0001111: // OUT
         int error = fopen_s(&file,"out.out","w");
         char* out_value = int_to_bin32(registers[primary_operand & 0b1111111]);
         fputs(out_value, file);
         free(out_value);
         fclose(file);
+        printf("outgoing value: %d\n",out_value);
+        Sleep(0.1);
         break;
       case 0b0001110: // GAD
         registers[primary_operand & 0b111111] = instruction_pointer;        
         break;
-      case 0b0001111: // IN
+      case 0b0001101: // IN
         error = fopen_s(&file,"in.in","r");
         char* temp = (char*) calloc(1,32);
         int counter=0;
@@ -202,10 +195,12 @@ int main(){
           temp[counter] = fgetc(file);
           counter++;
         }
+        printf("ingoing value: %s\n",temp);
         int valt = bin_to_int( temp );
         registers[primary_operand & 0b111111] = valt;
         free(temp);
         fclose(file);
+        Sleep(0.1);
         break;
       case 0b0010000: // SWAP
         int tempv_1 = registers[primary_operand & 0b1111111];
@@ -217,7 +212,7 @@ int main(){
         registers[secondary_operand & 0b111111] =  -primary_operand ;        
         
         break;
-      case 0xcf:
+      case 0x7f:
         for ( int iii=0; iii < 63; iii++ ){ 
           if (iii % 8 == 0){ printf("\n"); }
           printf("%08x ", registers[iii]); 
@@ -226,7 +221,6 @@ int main(){
         break;
 
     }
-    printf("\n%d,  %b", instruction_pointer, instruction);
   }  
   
   printf("\n\n||||||||||||||||||||||||||END||||||||||||||||||||||||||\n\n");

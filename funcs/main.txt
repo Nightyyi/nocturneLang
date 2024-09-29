@@ -1,8 +1,404 @@
 ld r0 0 
 ld r1 0 
+ld r2 1 
+ld r63 48
+bz r2 r63
+ld r3 0 
+RDC r3 
+ld r4 4096 
+ld r5 4096 
+div r3 r4 r6 
+mul r6 r5 r7 
+ld r8 r7 
+ld r4 255 
+and r3 r4 r5 
+ld r9 r5 
+ld r4 256 
+ld r5 255 
+div r3 r4 r6 
+and r6 r5 r7 
+ld r10 r7 
+ld r4 65536 
+ld r5 255 
+div r3 r4 r6 
+and r6 r5 r7 
+ld r3 r7 
+ld r4 1 
+eq r8 r4 r5 
+ld r2 r5 
+bnz r2 r63
+ld r4 5000 
+add r9 r4 r5 
+ld r3 r5 
+RD r8 r3 
+ld r4 4096 
+ld r5 4096 
+mul r4 r5 r6 
+ld r3 r6 
+ld r4 1 
+and r8 r4 r5 
+ld r2 r5 
 ld r63 7
-bnz r1 r63
-ld r0 0 
-RDC r0 
-ldn r63 -6
+bnz r2 r63
+ld r4 256 
+mul r1 r4 r5 
+add r3 r0 r6 
+add r6 r5 r7 
+ld r9 r7 
+WRC r9 
+ld r4 1 
+add r0 r4 r5 
+ld r0 r5 
+ld r4 2 
+and r8 r4 r5 
+ld r2 r5 
+ld r63 7
+bnz r2 r63
+ld r4 256 
+mul r1 r4 r5 
+add r3 r0 r6 
+add r6 r5 r7 
+ld r9 r7 
+WRC r9 
+ld r4 1 
+add r0 r4 r5 
+ld r0 r5 
+ld r4 4 
+and r8 r4 r5 
+ld r2 r5 
+ld r63 7
+bnz r2 r63
+ld r4 256 
+mul r1 r4 r5 
+add r3 r0 r6 
+add r6 r5 r7 
+ld r9 r7 
+WRC r9 
+ld r4 1 
+add r0 r4 r5 
+ld r0 r5 
+ld r4 8 
+and r8 r4 r5 
+ld r2 r5 
+ld r63 7
+bnz r2 r63
+ld r4 256 
+mul r1 r4 r5 
+add r3 r0 r6 
+add r6 r5 r7 
+ld r9 r7 
+WRC r9 
+ld r4 1 
+add r0 r4 r5 
+ld r0 r5 
+ld r4 16 
+and r8 r4 r5 
+ld r2 r5 
+ld r63 7
+bnz r2 r63
+ld r4 256 
+mul r1 r4 r5 
+add r3 r0 r6 
+add r6 r5 r7 
+ld r9 r7 
+WRC r9 
+ld r4 1 
+add r0 r4 r5 
+ld r0 r5 
+ld r4 1 
+add r1 r4 r5 
+ld r1 r5 
+ld r4 32 
+and r8 r4 r5 
+ld r2 r5 
+ld r63 7
+bnz r2 r63
+ld r4 256 
+mul r1 r4 r5 
+add r3 r0 r6 
+add r6 r5 r7 
+ld r9 r7 
+WRC r9 
+ld r4 1 
+add r0 r4 r5 
+ld r0 r5 
+ld r4 64 
+and r8 r4 r5 
+ld r2 r5 
+ld r63 7
+bnz r2 r63
+ld r4 256 
+mul r1 r4 r5 
+add r3 r0 r6 
+add r6 r5 r7 
+ld r9 r7 
+WRC r9 
+ld r4 1 
+add r0 r4 r5 
+ld r0 r5 
+ld r4 128 
+and r8 r4 r5 
+ld r2 r5 
+ld r63 7
+bnz r2 r63
+ld r4 256 
+mul r1 r4 r5 
+add r3 r0 r6 
+add r6 r5 r7 
+ld r9 r7 
+WRC r9 
+ld r4 1 
+add r0 r4 r5 
+ld r0 r5 
+ld r4 256 
+and r8 r4 r5 
+ld r2 r5 
+ld r63 7
+bnz r2 r63
+ld r4 256 
+mul r1 r4 r5 
+add r3 r0 r6 
+add r6 r5 r7 
+ld r9 r7 
+WRC r9 
+ld r4 1 
+add r0 r4 r5 
+ld r0 r5 
+ld r4 512 
+and r8 r4 r5 
+ld r2 r5 
+ld r63 7
+bnz r2 r63
+ld r4 256 
+mul r1 r4 r5 
+add r3 r0 r6 
+add r6 r5 r7 
+ld r9 r7 
+WRC r9 
+ld r4 4 
+sub r0 r4 r5 
+ld r0 r5 
+ld r4 1 
+add r1 r4 r5 
+ld r1 r5 
+ld r4 1024 
+and r8 r4 r5 
+ld r2 r5 
+ld r63 7
+bnz r2 r63
+ld r4 256 
+mul r1 r4 r5 
+add r3 r0 r6 
+add r6 r5 r7 
+ld r9 r7 
+WRC r9 
+ld r4 1 
+add r0 r4 r5 
+ld r0 r5 
+ld r4 2048 
+and r8 r4 r5 
+ld r2 r5 
+ld r63 7
+bnz r2 r63
+ld r4 256 
+mul r1 r4 r5 
+add r3 r0 r6 
+add r6 r5 r7 
+ld r9 r7 
+WRC r9 
+ld r4 1 
+add r0 r4 r5 
+ld r0 r5 
+ld r4 4096 
+and r8 r4 r5 
+ld r2 r5 
+ld r63 7
+bnz r2 r63
+ld r4 256 
+mul r1 r4 r5 
+add r3 r0 r6 
+add r6 r5 r7 
+ld r9 r7 
+WRC r9 
+ld r4 1 
+add r0 r4 r5 
+ld r0 r5 
+ld r4 8192 
+and r8 r4 r5 
+ld r2 r5 
+ld r63 7
+bnz r2 r63
+ld r4 256 
+mul r1 r4 r5 
+add r3 r0 r6 
+add r6 r5 r7 
+ld r9 r7 
+WRC r9 
+ld r4 1 
+add r0 r4 r5 
+ld r0 r5 
+ld r4 16384 
+and r8 r4 r5 
+ld r2 r5 
+ld r63 7
+bnz r2 r63
+ld r4 256 
+mul r1 r4 r5 
+add r3 r0 r6 
+add r6 r5 r7 
+ld r9 r7 
+WRC r9 
+ld r4 4 
+sub r0 r4 r5 
+ld r0 r5 
+ld r4 1 
+add r1 r4 r5 
+ld r1 r5 
+ld r4 32768 
+and r8 r4 r5 
+ld r2 r5 
+ld r63 7
+bnz r2 r63
+ld r4 256 
+mul r1 r4 r5 
+add r3 r0 r6 
+add r6 r5 r7 
+ld r9 r7 
+WRC r9 
+ld r4 1 
+add r0 r4 r5 
+ld r0 r5 
+ld r4 65536 
+and r8 r4 r5 
+ld r2 r5 
+ld r63 7
+bnz r2 r63
+ld r4 256 
+mul r1 r4 r5 
+add r3 r0 r6 
+add r6 r5 r7 
+ld r9 r7 
+WRC r9 
+ld r4 1 
+add r0 r4 r5 
+ld r0 r5 
+ld r4 131072 
+and r8 r4 r5 
+ld r2 r5 
+ld r63 7
+bnz r2 r63
+ld r4 256 
+mul r1 r4 r5 
+add r3 r0 r6 
+add r6 r5 r7 
+ld r9 r7 
+WRC r9 
+ld r4 1 
+add r0 r4 r5 
+ld r0 r5 
+ld r4 262144 
+and r8 r4 r5 
+ld r2 r5 
+ld r63 7
+bnz r2 r63
+ld r4 256 
+mul r1 r4 r5 
+add r3 r0 r6 
+add r6 r5 r7 
+ld r9 r7 
+WRC r9 
+ld r4 1 
+add r0 r4 r5 
+ld r0 r5 
+ld r4 524288 
+and r8 r4 r5 
+ld r2 r5 
+ld r63 7
+bnz r2 r63
+ld r4 256 
+mul r1 r4 r5 
+add r3 r0 r6 
+add r6 r5 r7 
+ld r9 r7 
+WRC r9 
+ld r4 4 
+sub r0 r4 r5 
+ld r0 r5 
+ld r4 1 
+add r1 r4 r5 
+ld r1 r5 
+ld r4 1048576 
+and r8 r4 r5 
+ld r2 r5 
+ld r63 7
+bnz r2 r63
+ld r4 256 
+mul r1 r4 r5 
+add r3 r0 r6 
+add r6 r5 r7 
+ld r9 r7 
+WRC r9 
+ld r4 1 
+add r0 r4 r5 
+ld r0 r5 
+ld r4 2097152 
+and r8 r4 r5 
+ld r2 r5 
+ld r63 7
+bnz r2 r63
+ld r4 256 
+mul r1 r4 r5 
+add r3 r0 r6 
+add r6 r5 r7 
+ld r9 r7 
+WRC r9 
+ld r4 1 
+add r0 r4 r5 
+ld r0 r5 
+ld r4 4194304 
+and r8 r4 r5 
+ld r2 r5 
+ld r63 7
+bnz r2 r63
+ld r4 256 
+mul r1 r4 r5 
+add r3 r0 r6 
+add r6 r5 r7 
+ld r9 r7 
+WRC r9 
+ld r4 1 
+add r0 r4 r5 
+ld r0 r5 
+ld r4 8388608 
+and r8 r4 r5 
+ld r2 r5 
+ld r63 7
+bnz r2 r63
+ld r4 256 
+mul r1 r4 r5 
+add r3 r0 r6 
+add r6 r5 r7 
+ld r9 r7 
+WRC r9 
+ld r4 1 
+add r0 r4 r5 
+ld r0 r5 
+ld r4 16777216 
+and r8 r4 r5 
+ld r2 r5 
+ld r63 7
+bnz r2 r63
+ld r4 256 
+mul r1 r4 r5 
+add r3 r0 r6 
+add r6 r5 r7 
+ld r9 r7 
+WRC r9 
+ld r4 1 
+add r0 r4 r5 
+ld r0 r5 
+ld r4 5 
+sub r1 r4 r5 
+ld r1 r5 
+ldn r63 -402
 b r63 

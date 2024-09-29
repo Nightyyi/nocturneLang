@@ -1,7 +1,405 @@
-ld x 0
+ld screen_x 0
+ld screen_y 0
 openloop
-ld n 0
-bnz n
+ld n 1
+bz n
 ld value 0
 RDC value
-closeloop
+ld a 4096
+ld b 4096
+div value a c
+mul c b d
+ld operation d
+ld a 255
+and value a b
+ld x b
+ld a 256
+ld b 255
+div value a c
+and c b d
+ld y d
+ld a 65536
+ld b 255
+div value a c
+and c b d
+ld z d
+ld a 1
+eq operation a b
+ld n b
+bnz n
+ld a 5000
+add x a b
+ld address b
+RD char address 
+ld a 4096
+ld b 4096
+mul a b c
+ld return_value_const c
+ld a 1
+and char a b
+ld n b
+bnz n
+ld a 256
+mul screen_y a b
+add return_value_const screen_x c
+add c b d
+ld return_value d
+WRC return_value
+close
+close
+ld a 1
+add screen_x a b
+ld screen_x b
+ld a 2
+and char a b
+ld n b
+bnz n
+ld a 256
+mul screen_y a b
+add return_value_const screen_x c
+add c b d
+ld return_value d
+WRC return_value
+close
+ld a 1
+add screen_x a b
+ld screen_x b
+ld a 4
+and char a b
+ld n b
+bnz n
+ld a 256
+mul screen_y a b
+add return_value_const screen_x c
+add c b d
+ld return_value d
+WRC return_value
+close
+ld a 1
+add screen_x a b
+ld screen_x b
+ld a 8
+and char a b
+ld n b
+bnz n
+ld a 256
+mul screen_y a b
+add return_value_const screen_x c
+add c b d
+ld return_value d
+WRC return_value
+close
+ld a 1
+add screen_x a b
+ld screen_x b
+ld a 16
+and char a b
+ld n b
+bnz n
+ld a 256
+mul screen_y a b
+add return_value_const screen_x c
+add c b d
+ld return_value d
+WRC return_value
+close
+ld a 1
+add screen_x a b
+ld screen_x b
+ld a 1
+add screen_y a b
+ld screen_y b
+ld a 32
+and char a b
+ld n b
+bnz n
+ld a 256
+mul screen_y a b
+add return_value_const screen_x c
+add c b d
+ld return_value d
+WRC return_value
+close
+ld a 1
+add screen_x a b
+ld screen_x b
+ld a 64
+and char a b
+ld n b
+bnz n
+ld a 256
+mul screen_y a b
+add return_value_const screen_x c
+add c b d
+ld return_value d
+WRC return_value
+close
+ld a 1
+add screen_x a b
+ld screen_x b
+ld a 128
+and char a b
+ld n b
+bnz n
+ld a 256
+mul screen_y a b
+add return_value_const screen_x c
+add c b d
+ld return_value d
+WRC return_value
+close
+ld a 1
+add screen_x a b
+ld screen_x b
+ld a 256
+and char a b
+ld n b
+bnz n
+ld a 256
+mul screen_y a b
+add return_value_const screen_x c
+add c b d
+ld return_value d
+WRC return_value
+close
+ld a 1
+add screen_x a b
+ld screen_x b
+ld a 512
+and char a b
+ld n b
+bnz n
+ld a 256
+mul screen_y a b
+add return_value_const screen_x c
+add c b d
+ld return_value d
+WRC return_value
+close
+ld a 4
+sub screen_x a b
+ld screen_x b
+ld a 1
+add screen_y a b
+ld screen_y b
+ld a 1024
+and char a b
+ld n b
+bnz n
+ld a 256
+mul screen_y a b
+add return_value_const screen_x c
+add c b d
+ld return_value d
+WRC return_value
+close
+ld a 1
+add screen_x a b
+ld screen_x b
+ld a 2048
+and char a b
+ld n b
+bnz n
+ld a 256
+mul screen_y a b
+add return_value_const screen_x c
+add c b d
+ld return_value d
+WRC return_value
+close
+ld a 1
+add screen_x a b
+ld screen_x b
+ld a 4096
+and char a b
+ld n b
+bnz n
+ld a 256
+mul screen_y a b
+add return_value_const screen_x c
+add c b d
+ld return_value d
+WRC return_value
+close
+ld a 1
+add screen_x a b
+ld screen_x b
+ld a 8192
+and char a b
+ld n b
+bnz n
+ld a 256
+mul screen_y a b
+add return_value_const screen_x c
+add c b d
+ld return_value d
+WRC return_value
+close
+ld a 1
+add screen_x a b
+ld screen_x b
+ld a 16384
+and char a b
+ld n b
+bnz n
+ld a 256
+mul screen_y a b
+add return_value_const screen_x c
+add c b d
+ld return_value d
+WRC return_value
+close
+ld a 4
+sub screen_x a b
+ld screen_x b
+ld a 1
+add screen_y a b
+ld screen_y b
+ld a 32768
+and char a b
+ld n b
+bnz n
+ld a 256
+mul screen_y a b
+add return_value_const screen_x c
+add c b d
+ld return_value d
+WRC return_value
+close
+ld a 1
+add screen_x a b
+ld screen_x b
+ld a 65536
+and char a b
+ld n b
+bnz n
+ld a 256
+mul screen_y a b
+add return_value_const screen_x c
+add c b d
+ld return_value d
+WRC return_value
+close
+ld a 1
+add screen_x a b
+ld screen_x b
+ld a 131072
+and char a b
+ld n b
+bnz n
+ld a 256
+mul screen_y a b
+add return_value_const screen_x c
+add c b d
+ld return_value d
+WRC return_value
+close
+ld a 1
+add screen_x a b
+ld screen_x b
+ld a 262144
+and char a b
+ld n b
+bnz n
+ld a 256
+mul screen_y a b
+add return_value_const screen_x c
+add c b d
+ld return_value d
+WRC return_value
+close
+ld a 1
+add screen_x a b
+ld screen_x b
+ld a 524288
+and char a b
+ld n b
+bnz n
+ld a 256
+mul screen_y a b
+add return_value_const screen_x c
+add c b d
+ld return_value d
+WRC return_value
+close
+ld a 4
+sub screen_x a b
+ld screen_x b
+ld a 1
+add screen_y a b
+ld screen_y b
+ld a 1048576
+and char a b
+ld n b
+bnz n
+ld a 256
+mul screen_y a b
+add return_value_const screen_x c
+add c b d
+ld return_value d
+WRC return_value
+close
+ld a 1
+add screen_x a b
+ld screen_x b
+ld a 2097152
+and char a b
+ld n b
+bnz n
+ld a 256
+mul screen_y a b
+add return_value_const screen_x c
+add c b d
+ld return_value d
+WRC return_value
+close
+ld a 1
+add screen_x a b
+ld screen_x b
+ld a 4194304
+and char a b
+ld n b
+bnz n
+ld a 256
+mul screen_y a b
+add return_value_const screen_x c
+add c b d
+ld return_value d
+WRC return_value
+close
+ld a 1
+add screen_x a b
+ld screen_x b
+ld a 8388608
+and char a b
+ld n b
+bnz n
+ld a 256
+mul screen_y a b
+add return_value_const screen_x c
+add c b d
+ld return_value d
+WRC return_value
+close
+ld a 1
+add screen_x a b
+ld screen_x b
+ld a 16777216
+and char a b
+ld n b
+bnz n
+ld a 256
+mul screen_y a b
+add return_value_const screen_x c
+add c b d
+ld return_value d
+WRC return_value
+close
+ld a 1
+add screen_x a b
+ld screen_x b
+ld a 5
+sub screen_y a b
+ld screen_y b
+close
+close
